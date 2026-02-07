@@ -2,10 +2,16 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { getWeather } from "../../api";
 import Card from "./Card";
 
-export default function DailyForecast() {
+import { Coords } from "../../types";
+
+type Props = {
+  coords: Coords;
+}
+
+export default function DailyForecast({ coords }: Props) {
   const { data } = useSuspenseQuery({
-    queryKey: ['weather'],
-    queryFn: () => getWeather('24.0889', '32.8998'), // Aswan, Egypt
+    queryKey: ['weather', coords.lat, coords.lon],
+    queryFn: () => getWeather(coords.lat.toString(), coords.lon.toString()),
   });
 
   const getDayName = (dt: number) => {
@@ -13,7 +19,7 @@ export default function DailyForecast() {
   };
 
   return (
-    <Card title="Daily Forecast" childrenClassName="flex flex-col gap-2">
+    <Card title="Daily Forecast" childrenClassName="flex flex-col gap-2" >
       <div className="grid grid-cols-5 text-sm text-zinc-500 font-medium text-center">
         <p className="text-left">Day</p>
         <p></p>
@@ -35,7 +41,8 @@ export default function DailyForecast() {
           <p className="text-zinc-500 font-medium">{Math.round(day.temp.min)}°C</p>
           <p className="text-zinc-400 text-xs">{Math.round(day.feels_like.day)}°C</p>
         </div>
-      ))}
-    </Card>
+      ))
+      }
+    </Card >
   );
 }

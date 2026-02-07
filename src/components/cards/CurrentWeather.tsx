@@ -1,11 +1,16 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { getWeather } from "../../api";
 import Card from "./Card";
+import { Coords } from "../../types";
 
-export default function CurrentWeather() {
+type Props = {
+  coords: Coords;
+}
+
+export default function CurrentWeather({ coords }: Props) {
   const { data } = useSuspenseQuery({
-    queryKey: ['weather'],
-    queryFn: () => getWeather('24.0889', '32.8998'), // Aswan, Egypt
+    queryKey: ['weather', coords.lat, coords.lon],
+    queryFn: () => getWeather(coords.lat.toString(), coords.  lon.toString()),
   });
 
   const getLocalTime = (dt: number, timezone: number) => {
