@@ -16,69 +16,69 @@ export default function CurrentWeather({ coords }: Props) {
   };
 
   return (
-    <Card title="Current Weather" childrenClassName="flex flex-col items-center gap-10 py-6">
+    <Card title="Current Weather" childrenClassName="flex flex-col items-center gap-6 md:gap-10 py-6">
       {/* Main Temp & Icon */}
       <div className="flex flex-col items-center gap-4">
         <div className="relative">
-          <h1 className="text-8xl font-black tracking-tighter text-foreground drop-shadow-sm">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-black tracking-tighter text-foreground drop-shadow-sm">
             {Math.round(data?.current.temp || 0)}°
           </h1>
         </div>
 
         <div className="flex flex-col items-center gap-2">
-          <div className="p-3 rounded-full bg-primary/10 border border-primary/20 shadow-inner">
+          <div className="p-2 sm:p-3 rounded-full bg-primary/10 border border-primary/20 shadow-inner">
             <img
               src={`https://openweathermap.org/img/wn/${data?.current.weather[0].icon}@2x.png`}
               alt={data?.current.weather[0].description}
-              className="w-16 h-16 drop-shadow-md"
+              className="w-12 h-12 sm:w-16 sm:h-16 drop-shadow-md"
             />
           </div>
-          <p className="text-2xl text-foreground font-bold capitalize tracking-tight">
+          <p className="text-xl sm:text-2xl text-foreground font-bold capitalize tracking-tight text-center">
             {data?.current.weather[0].description}
           </p>
         </div>
       </div>
 
       {/* Local Time */}
-      <div className="flex items-center gap-3 px-6 py-3 rounded-2xl bg-muted/30 border border-border/40 backdrop-blur-sm">
-        <Clock className="w-5 h-5 text-primary" />
+      <div className="flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-2xl bg-muted/30 border border-border/40 backdrop-blur-sm">
+        <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
         <div className="flex flex-col">
-          <p className="text-[10px] text-muted-foreground uppercase font-black tracking-widest leading-none mb-1">Local Time</p>
-          <p className="text-2xl font-bold tracking-tight">
+          <p className="text-[8px] sm:text-[10px] text-muted-foreground uppercase font-black tracking-widest leading-none mb-1">Local Time</p>
+          <p className="text-lg sm:text-2xl font-bold tracking-tight">
             {data?.current ? getLocalTime(data.current.dt, data.current.timezone) : '--:--'}
           </p>
         </div>
       </div>
 
       {/* Stats Grid */}
-      <div className="w-full grid grid-cols-3 gap-6 pt-8 border-t border-border/30">
+      <div className="w-full grid grid-cols-3 gap-2 sm:gap-6 pt-6 sm:pt-8 border-t border-border/30">
         <div className="flex flex-col items-center gap-2 group">
-          <div className="p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
-            <Thermometer className="w-5 h-5 text-primary" />
+          <div className="p-1.5 sm:p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
+            <Thermometer className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Feels</p>
-            <p className="text-lg font-bold">{Math.round(data?.current.feels_like || 0)}°</p>
+            <p className="text-[8px] sm:text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Feels</p>
+            <p className="text-sm sm:text-lg font-bold">{Math.round(data?.current.feels_like || 0)}°</p>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-2 group">
-          <div className="p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
-            <Droplets className="w-5 h-5 text-primary" />
+          <div className="p-1.5 sm:p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
+            <Droplets className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Humidity</p>
-            <p className="text-lg font-bold">{data?.current.humidity}%</p>
+            <p className="text-[8px] sm:text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Humidity</p>
+            <p className="text-sm sm:text-lg font-bold">{data?.current.humidity}%</p>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-2 group">
-          <div className="p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
-            <Wind className="w-5 h-5 text-primary" />
+          <div className="p-1.5 sm:p-2 rounded-xl bg-accent/20 border border-border/40 transition-colors group-hover:bg-primary/10 group-hover:border-primary/30">
+            <Wind className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Wind</p>
-            <p className="text-lg font-bold">{data?.current.wind_speed} <span className="text-[10px]">m/s</span></p>
+            <p className="text-[8px] sm:text-[10px] text-muted-foreground font-black uppercase tracking-widest mb-1">Wind</p>
+            <p className="text-sm sm:text-lg font-bold">{data?.current.wind_speed} <span className="text-[8px] sm:text-[10px]">m/s</span></p>
           </div>
         </div>
       </div>

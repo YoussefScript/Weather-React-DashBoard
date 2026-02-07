@@ -32,7 +32,7 @@ const layers: { value: WeatherLayer; label: string }[] = [
 export default function WeatherLayerSelect({ value, onChange }: WeatherLayerSelectProps) {
     return (
         <Select value={value} onValueChange={onChange}>
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger className="w-full sm:w-[200px]">
                 <SelectValue placeholder="Select weather layer" />
             </SelectTrigger>
 

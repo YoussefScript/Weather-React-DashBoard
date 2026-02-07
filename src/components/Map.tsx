@@ -31,7 +31,7 @@ export default function Map({ coords, onMapClick, selectedLayer }: Props) {
     };
 
     return (
-        <div className='relative w-full h-[500px]'>
+        <div className='relative w-full h-[300px] sm:h-[400px] md:h-[500px]'>
             <MapContainer
                 center={[lat, lon]}
                 zoom={5}

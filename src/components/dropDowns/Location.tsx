@@ -48,7 +48,7 @@ export default function Location({ onLocationChange }: LocationProps) {
 
     return (
         <Select value={selectedCity} onValueChange={handleCityChange}>
-            <SelectTrigger className="w-[220px]">
+            <SelectTrigger className="w-full sm:w-[220px]">
                 <SelectValue placeholder="Select city" />
             </SelectTrigger>
 
