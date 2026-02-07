@@ -1,5 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getWeather } from "../../api";
+import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
 import { Coords } from "../../types";
 
@@ -8,10 +7,7 @@ type Props = {
 }
 
 export default function CurrentWeather({ coords }: Props) {
-  const { data } = useSuspenseQuery({
-    queryKey: ['weather', coords.lat, coords.lon],
-    queryFn: () => getWeather(coords.lat.toString(), coords.  lon.toString()),
-  });
+  const { data } = useWeatherData(coords);
 
   const getLocalTime = (dt: number, timezone: number) => {
     // Shift time by offset to get the correct time at location, then read as UTC

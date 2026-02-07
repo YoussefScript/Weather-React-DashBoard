@@ -92,3 +92,21 @@ export async function getWeather(lat: string, lon: string) {
   // Validate with Zod
   return oneCallLikeSchema.parse(finalData);
 }
+
+export async function getGeocode(cityName: string) {
+  const res = await fetch(
+    `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&limit=1&appid=${API_KEY}`
+  );
+
+  if (!res.ok) {
+    throw new Error(`Geocoding failed: ${res.statusText}`);
+  }
+
+  const data = await res.json();
+
+  if (!data || data.length === 0) {
+    throw new Error(`No results found for "${cityName}"`);
+  }
+
+  return data[0]; // Return first result
+}

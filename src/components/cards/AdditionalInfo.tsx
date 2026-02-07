@@ -1,5 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getWeather } from "../../api";
+import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
 import Sunrise from '../../assets/sunrise.svg?react';
 import Sunset from '../../assets/sunset.svg?react';
@@ -16,10 +15,7 @@ type Props = {
 }
 
 export default function AdditionalInfo({ coords }: Props) {
-    const { data } = useSuspenseQuery({
-        queryKey: ['weather', coords.lat, coords.lon],
-        queryFn: () => getWeather(coords.lat.toString(), coords.lon.toString()),
-    });
+    const { data } = useWeatherData(coords);
 
     const { clouds, pressure, wind_deg, sunrise, sunset } = data.current;
 

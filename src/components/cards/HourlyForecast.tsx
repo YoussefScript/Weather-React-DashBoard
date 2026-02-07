@@ -1,5 +1,4 @@
-import { useSuspenseQuery } from "@tanstack/react-query";
-import { getWeather } from "../../api";
+import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
 
 import { Coords } from "../../types";
@@ -9,10 +8,7 @@ type Props = {
 }
 
 export default function HourlyForecast({ coords }: Props) {
-    const { data } = useSuspenseQuery({
-        queryKey: ['weather', coords.lat, coords.lon],
-        queryFn: () => getWeather(coords.lat.toString(), coords.lon.toString()),
-    });
+    const { data } = useWeatherData(coords);
 
     const getHour = (dt: number) => {
         return new Date(dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
