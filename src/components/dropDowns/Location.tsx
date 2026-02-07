@@ -10,25 +10,15 @@ import { getGeocode } from "@/api";
 import { useState } from "react";
 
 const cities = [
-    "Los Angeles",
-    "San Francisco",
     "London",
     "Paris",
     "Berlin",
     "Rome",
-    "Barcelona",
     "Madrid",
-    "Amsterdam",
     "Tokyo",
-    "Hong Kong",
     "Dubai",
-    "Sydney",
-    "Singapore",
-    "Rio de Janeiro",
     "Cairo",
     "Aswan",
-    "Alexandria",
-    "Luxor",
 ];
 
 interface LocationProps {
