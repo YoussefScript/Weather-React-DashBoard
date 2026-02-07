@@ -10,9 +10,13 @@ function App() {
 
   const [coords, setCoords] = useState<Coords>({lat: 24.0889, lon: 32.8998});
 
+  const onMapClick = (lat: number, lon: number) => {
+    setCoords({lat, lon});
+  } 
+
   return (
     <div className='flex flex-col gap-8'>
-      <Map />
+      <Map coords={coords} onMapClick={onMapClick}/>
       <CurrentWeather coords={coords}/>
       <HourlyForecast coords={coords}/>
       <DailyForecast coords={coords}/>
