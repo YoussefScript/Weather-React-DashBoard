@@ -1,7 +1,7 @@
 import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
-
 import { Coords } from "../../types";
+import { useLanguage } from "../LanguageProvider";
 
 type Props = {
     coords: Coords;
@@ -9,13 +9,14 @@ type Props = {
 
 export default function HourlyForecast({ coords }: Props) {
     const { data } = useWeatherData(coords);
+    const { t, language } = useLanguage();
 
     const getHour = (dt: number) => {
-        return new Date(dt * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+        return new Date(dt * 1000).toLocaleTimeString(language === 'ar' ? 'ar-EG' : 'en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
     };
 
     return (
-        <Card title="Hourly Forecast (48 Hours)" childrenClassName="flex flex-row overflow-x-auto gap-5 pb-2">
+        <Card title={t('weather.hourly')} childrenClassName="flex flex-row overflow-x-auto gap-5 pb-2">
             {
                 data?.hourly.slice(0, 48).map(hour => (
                     <div key={hour.dt} className="flex flex-col items-center gap-2 min-w-[76px]">

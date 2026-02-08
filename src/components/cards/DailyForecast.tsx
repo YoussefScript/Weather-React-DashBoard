@@ -1,7 +1,7 @@
 import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
-
 import { Coords } from "../../types";
+import { useLanguage } from "../LanguageProvider";
 
 type Props = {
   coords: Coords;
@@ -9,19 +9,20 @@ type Props = {
 
 export default function DailyForecast({ coords }: Props) {
   const { data } = useWeatherData(coords);
+  const { t, language } = useLanguage();
 
   const getDayName = (dt: number) => {
-    return new Date(dt * 1000).toLocaleDateString('en-US', { weekday: 'short' });
+    return new Date(dt * 1000).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { weekday: 'short' });
   };
 
   return (
-    <Card title="Daily Forecast" childrenClassName="flex flex-col gap-2 overflow-x-auto">
+    <Card title={t('weather.daily')} childrenClassName="flex flex-col gap-2 overflow-x-auto">
       <div className="grid grid-cols-5 min-w-[320px] text-[10px] sm:text-xs text-muted-foreground font-semibold text-center uppercase tracking-wider">
-        <p className="text-left">Day</p>
+        <p className="text-left">{language === 'ar' ? 'اليوم' : 'Day'}</p>
         <p></p>
-        <p>High</p>
-        <p>Low</p>
-        <p>Feels</p>
+        <p>{language === 'ar' ? 'عظمى' : 'High'}</p>
+        <p>{language === 'ar' ? 'صغرى' : 'Low'}</p>
+        <p>{language === 'ar' ? 'محسوسة' : 'Feels'}</p>
       </div>
       {data?.daily.map((day: any) => (
         <div key={day.dt} className="grid grid-cols-5 min-w-[320px] items-center text-center text-xs sm:text-sm">

@@ -2,6 +2,7 @@ import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
 import { Coords } from "../../types";
 import { Droplets, Wind, Thermometer, Clock } from "lucide-react";
+import { useLanguage } from "../LanguageProvider";
 
 type Props = {
   coords: Coords;
@@ -9,14 +10,20 @@ type Props = {
 
 export default function CurrentWeather({ coords }: Props) {
   const { data } = useWeatherData(coords);
+  const { t, language } = useLanguage();
 
   const getLocalTime = (dt: number, timezone: number) => {
     const date = new Date((dt + timezone) * 1000);
-    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZone: 'UTC', hour12: true });
+    return date.toLocaleTimeString(language === 'ar' ? 'ar-EG' : 'en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'UTC',
+      hour12: true
+    });
   };
 
   return (
-    <Card title={`Current Weather in ${data?.current.name || '...'}`} childrenClassName="flex flex-col items-center gap-5 md:gap-8 py-4">
+    <Card title={t('weather.currentIn').replace('{city}', data?.current.name || '...')} childrenClassName="flex flex-col items-center gap-5 md:gap-8 py-4">
       {/* Main Temp & Icon */}
       <div className="flex flex-col items-center gap-3">
         <div className="relative">
@@ -43,7 +50,9 @@ export default function CurrentWeather({ coords }: Props) {
       <div className="flex items-center gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-muted/40 border border-border/50 backdrop-blur-sm">
         <Clock className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
         <div className="flex flex-col">
-          <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase font-semibold tracking-[0.2em] leading-none mb-1">Local Time</p>
+          <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase font-semibold tracking-[0.2em] leading-none mb-1">
+            {language === 'ar' ? 'الوقت المحلي' : 'Local Time'}
+          </p>
           <p className="text-base sm:text-lg font-semibold tracking-tight">
             {data?.current ? getLocalTime(data.current.dt, data.current.timezone) : '--:--'}
           </p>
@@ -57,7 +66,9 @@ export default function CurrentWeather({ coords }: Props) {
             <Thermometer className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">Feels</p>
+            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+              {t('weather.feelsLike')}
+            </p>
             <p className="text-sm sm:text-base font-semibold">{Math.round(data?.current.feels_like || 0)}°</p>
           </div>
         </div>
@@ -67,7 +78,9 @@ export default function CurrentWeather({ coords }: Props) {
             <Droplets className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">Humidity</p>
+            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+              {t('weather.humidity')}
+            </p>
             <p className="text-sm sm:text-base font-semibold">{data?.current.humidity}%</p>
           </div>
         </div>
@@ -77,8 +90,10 @@ export default function CurrentWeather({ coords }: Props) {
             <Wind className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">Wind</p>
-            <p className="text-sm sm:text-base font-semibold">{data?.current.wind_speed} <span className="text-[9px] sm:text-[10px]">m/s</span></p>
+            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+              {t('weather.wind')}
+            </p>
+            <p className="text-sm sm:text-base font-semibold">{data?.current.wind_speed} <span className="text-[9px] sm:text-[10px]">{language === 'ar' ? 'م/ث' : 'm/s'}</span></p>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Navigation } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useLanguage } from "./LanguageProvider";
 
 interface LiveLocationProps {
     onLocationUpdate: (lat: number, lon: number) => void;
@@ -8,6 +9,7 @@ interface LiveLocationProps {
 
 export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
     const [loading, setLoading] = useState(false);
+    const { t } = useLanguage();
 
     const handleGetLocation = () => {
         if (!navigator.geolocation) {
@@ -23,19 +25,19 @@ export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
                 setLoading(false);
             },
             (error) => {
-                let message = "An unknown error occurred";
+                let messageKey = "location.unknown";
                 switch (error.code) {
                     case error.PERMISSION_DENIED:
-                        message = "User denied the request for Geolocation. Please enable it in your browser settings.";
+                        messageKey = "location.denied";
                         break;
                     case error.POSITION_UNAVAILABLE:
-                        message = "Location information is unavailable.";
+                        messageKey = "location.unavailable";
                         break;
                     case error.TIMEOUT:
-                        message = "The request to get user location timed out.";
+                        messageKey = "location.timeout";
                         break;
                 }
-                alert(message);
+                alert(t(messageKey));
                 setLoading(false);
             },
             {
@@ -54,8 +56,8 @@ export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
             className="group flex items-center gap-2 bg-background/50 border-border/60 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
         >
             <Navigation className={`w-4 h-4 text-primary transition-all duration-500 ${loading ? 'animate-pulse scale-110' : 'group-hover:rotate-12'}`} />
-            <span className="hidden sm:inline">Use Current Location</span>
-            <span className="sm:hidden">Live Location</span>
+            <span className="hidden sm:inline">{t('location.current')}</span>
+            <span className="sm:hidden">{t('location.live')}</span>
         </Button>
     );
 }

@@ -1,10 +1,10 @@
 const API_KEY = import.meta.env.VITE_API_KEY;
 import { oneCallLikeSchema, HourlyWeather } from "./schemas/wetherSchema";
 
-export async function getWeather(lat: string, lon: string) {
+export async function getWeather(lat: string, lon: string, lang: string = 'en') {
   // 1️⃣ Fetch current weather
   const currentRes = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=${lang}`
   );
   const currentData = await currentRes.json();
 
@@ -26,7 +26,7 @@ export async function getWeather(lat: string, lon: string) {
 
   // 2️⃣ Fetch 5-day forecast (3-hour intervals)
   const forecastRes = await fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}&lang=${lang}`
   );
   const forecastData = await forecastRes.json();
 
