@@ -11,8 +11,6 @@ type Props = {
     onMapClick: (lat: number, lon: number) => void
 }
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-
 export default function Map({ coords, onMapClick }: Props) {
     const { lat, lon } = coords;
 
@@ -71,7 +69,7 @@ function MapTilerLayerComponent() {
     useEffect(() => {
         const tileLayer = new maptilersdk.MaptilerLayer({
             style: mapStyle,
-            apiKey: "s2PdDjbdSpl8cWwO5JrP",
+            apiKey: import.meta.env.VITE_MAPTILER_KEY,
         });
 
         tileLayer.addTo(map);
