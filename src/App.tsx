@@ -21,7 +21,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="weather-app-theme">
       <div className='min-h-screen bg-background text-foreground transition-colors duration-300'>
-        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-10 flex flex-col gap-6 md:gap-10'>
+        <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-10 flex flex-col gap-6 md:gap-10 animate-in fade-in duration-700'>
           {/* Header Section */}
           <header className='flex flex-col md:flex-row justify-between items-center gap-4 p-4 md:p-5 rounded-2xl bg-card/50 backdrop-blur-xl border border-border/60 shadow-lg'>
             <div className='flex flex-col gap-1 text-center md:text-left'>
