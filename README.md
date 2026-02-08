@@ -9,7 +9,6 @@ Developed by **Youssef Emad Kamel**.
 ## ✨ Key Features
 
 - 🌍 **Interactive Weather Map**: Powered by **MapTiler** and **Leaflet**, offering beautiful dark and light base styles.
-- 🌦️ **Real-time Overlays**: Visualize **Clouds**, **Precipitation**, **Wind Speed**, **Temperature**, and **Pressure** directly on the map.
 - 🎯 **City Search & Geocoding**: Quick city selection from a global database with automatic coordinate conversion.
 - 🌡️ **Comprehensive Data**: 
   - Current weather conditions with feels-like, humidity, and wind metrics.

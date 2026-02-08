@@ -1,0 +1,61 @@
+import { Navigation } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+
+interface LiveLocationProps {
+    onLocationUpdate: (lat: number, lon: number) => void;
+}
+
+export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
+    const [loading, setLoading] = useState(false);
+
+    const handleGetLocation = () => {
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+            return;
+        }
+
+        setLoading(true);
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const { latitude, longitude } = position.coords;
+                onLocationUpdate(latitude, longitude);
+                setLoading(false);
+            },
+            (error) => {
+                let message = "An unknown error occurred";
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        message = "User denied the request for Geolocation. Please enable it in your browser settings.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        message = "Location information is unavailable.";
+                        break;
+                    case error.TIMEOUT:
+                        message = "The request to get user location timed out.";
+                        break;
+                }
+                alert(message);
+                setLoading(false);
+            },
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            }
+        );
+    };
+
+    return (
+        <Button
+            onClick={handleGetLocation}
+            disabled={loading}
+            variant="outline"
+            className="group flex items-center gap-2 bg-background/50 border-border/60 hover:bg-primary/10 hover:border-primary/30 transition-all duration-300"
+        >
+            <Navigation className={`w-4 h-4 text-primary transition-all duration-500 ${loading ? 'animate-pulse scale-110' : 'group-hover:rotate-12'}`} />
+            <span className="hidden sm:inline">Use Current Location</span>
+            <span className="sm:hidden">Live Location</span>
+        </Button>
+    );
+}

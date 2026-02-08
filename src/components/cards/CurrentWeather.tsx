@@ -16,7 +16,7 @@ export default function CurrentWeather({ coords }: Props) {
   };
 
   return (
-    <Card title="Current Weather" childrenClassName="flex flex-col items-center gap-5 md:gap-8 py-4">
+    <Card title={`Current Weather in ${data?.current.name || '...'}`} childrenClassName="flex flex-col items-center gap-5 md:gap-8 py-4">
       {/* Main Temp & Icon */}
       <div className="flex flex-col items-center gap-3">
         <div className="relative">

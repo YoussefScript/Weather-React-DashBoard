@@ -32,7 +32,6 @@ export function ThemeProvider({
 
     useEffect(() => {
         const root = window.document.documentElement;
-<<<<<<< HEAD
         const body = window.document.body;
 
         const applyTheme = () => {
@@ -63,22 +62,6 @@ export function ThemeProvider({
             mediaQuery.addEventListener("change", handleChange);
             return () => mediaQuery.removeEventListener("change", handleChange);
         }
-=======
-
-        root.classList.remove('light', 'dark');
-
-        if (theme === 'system') {
-            const systemTheme = window.matchMedia('(prefers-color-scheme: dark)')
-                .matches
-                ? 'dark'
-                : 'light';
-
-            root.classList.add(systemTheme);
-            return;
-        }
-
-        root.classList.add(theme);
->>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
     }, [theme]);
 
     const value = {
