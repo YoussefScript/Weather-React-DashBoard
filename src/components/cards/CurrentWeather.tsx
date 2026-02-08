@@ -51,7 +51,7 @@ export default function CurrentWeather({ coords }: Props) {
         <Clock className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
         <div className="flex flex-col">
           <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase font-semibold tracking-[0.2em] leading-none mb-1">
-            {language === 'ar' ? 'الوقت المحلي' : 'Local Time'}
+            {t('weather.localTime')}
           </p>
           <p className="text-base sm:text-lg font-semibold tracking-tight">
             {data?.current ? getLocalTime(data.current.dt, data.current.timezone) : '--:--'}
@@ -93,7 +93,7 @@ export default function CurrentWeather({ coords }: Props) {
             <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
               {t('weather.wind')}
             </p>
-            <p className="text-sm sm:text-base font-semibold">{data?.current.wind_speed} <span className="text-[9px] sm:text-[10px]">{language === 'ar' ? 'م/ث' : 'm/s'}</span></p>
+            <p className="text-sm sm:text-base font-semibold">{data?.current.wind_speed} <span className="text-[9px] sm:text-[10px]">{t('weather.ms')}</span></p>
           </div>
         </div>
       </div>

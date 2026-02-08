@@ -18,11 +18,11 @@ export default function DailyForecast({ coords }: Props) {
   return (
     <Card title={t('weather.daily')} childrenClassName="flex flex-col gap-2 overflow-x-auto">
       <div className="grid grid-cols-5 min-w-[320px] text-[10px] sm:text-xs text-muted-foreground font-semibold text-center uppercase tracking-wider">
-        <p className="text-left">{language === 'ar' ? 'اليوم' : 'Day'}</p>
+        <p className="text-left">{t('weather.day')}</p>
         <p></p>
-        <p>{language === 'ar' ? 'عظمى' : 'High'}</p>
-        <p>{language === 'ar' ? 'صغرى' : 'Low'}</p>
-        <p>{language === 'ar' ? 'محسوسة' : 'Feels'}</p>
+        <p>{t('weather.high')}</p>
+        <p>{t('weather.low')}</p>
+        <p>{t('weather.feels')}</p>
       </div>
       {data?.daily.map((day: any) => (
         <div key={day.dt} className="grid grid-cols-5 min-w-[320px] items-center text-center text-xs sm:text-sm">

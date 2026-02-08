@@ -95,7 +95,7 @@ export async function getWeather(lat: string, lon: string, lang: string = 'en') 
 
 export async function getGeocode(cityName: string) {
   const res = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&limit=1&appid=${API_KEY}`
+    `https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(cityName)}&limit=1&appid=${API_KEY}`
   );
 
   if (!res.ok) {

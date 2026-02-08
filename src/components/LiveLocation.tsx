@@ -13,7 +13,7 @@ export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
 
     const handleGetLocation = () => {
         if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
+            alert(t("location.notSupported"));
             return;
         }
 
