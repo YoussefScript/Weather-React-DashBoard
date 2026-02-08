@@ -23,26 +23,45 @@ export default function AdditionalInfo({ coords }: Props) {
         <Card title="Additional Weather Info" childrenClassName="flex flex-col gap-4 text-sm font-medium" >
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">Cloudiness (%)</p>
                     <Cloud className="w-5 h-5 text-primary" />
+=======
+                    <p className="text-zinc-500">Cloudiness (%)</p>
+                    <Cloud className="w-5 h-5 text-white" />
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                 </div>
                 <p>{clouds}</p>
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">UV Index</p>
                     <Uv className="w-5 h-5 text-primary" />
+=======
+                    <p className="text-zinc-500">UV Index</p>
+                    <Uv className="w-5 h-5 text-white" />
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                 </div>
                 <p>0</p>
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">Wind Direction</p>
                     <Wind className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex items-center gap-2">
                     <Direction
                         className="w-5 h-5 text-primary"
+=======
+                    <p className="text-zinc-500">Wind Direction</p>
+                    <Wind className="w-5 h-5 text-white" />
+                </div>
+                <div className="flex items-center gap-2">
+                    <Direction
+                        className="w-5 h-5 text-white"
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                         style={{ transform: `rotate(${wind_deg}deg)` }}
                     />
                     <p>{wind_deg}°</p>
@@ -50,22 +69,37 @@ export default function AdditionalInfo({ coords }: Props) {
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">Pressure (hPa)</p>
                     <Pressure className="w-5 h-5 text-primary" />
+=======
+                    <p className="text-zinc-500">Pressure (hPa)</p>
+                    <Pressure className="w-5 h-5 text-white" />
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                 </div>
                 <p>{pressure}</p>
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">Sunrise</p>
                     <Sunrise className="w-5 h-5 text-primary" />
+=======
+                    <p className="text-zinc-500">Sunrise</p>
+                    <Sunrise className="w-5 h-5 text-white" />
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                 </div>
                 <p>{new Date(sunrise * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
+<<<<<<< HEAD
                     <p className="text-muted-foreground">Sunset</p>
                     <Sunset className="w-5 h-5 text-primary" />
+=======
+                    <p className="text-zinc-500">Sunset</p>
+                    <Sunset className="w-5 h-5 text-white" />
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
                 </div>
                 <p>{new Date(sunset * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })}</p>
             </div>

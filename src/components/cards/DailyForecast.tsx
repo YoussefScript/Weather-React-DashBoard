@@ -16,7 +16,11 @@ export default function DailyForecast({ coords }: Props) {
 
   return (
     <Card title="Daily Forecast" childrenClassName="flex flex-col gap-2 overflow-x-auto" >
+<<<<<<< HEAD
       <div className="grid grid-cols-5 min-w-[320px] text-[10px] sm:text-sm text-muted-foreground font-medium text-center">
+=======
+      <div className="grid grid-cols-5 min-w-[320px] text-[10px] sm:text-sm text-zinc-500 font-medium text-center">
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
         <p className="text-left">Day</p>
         <p></p>
         <p>High</p>
@@ -34,8 +38,13 @@ export default function DailyForecast({ coords }: Props) {
             />
           </div>
           <p className="font-medium">{Math.round(day.temp.max)}°C</p>
+<<<<<<< HEAD
           <p className="text-muted-foreground font-medium">{Math.round(day.temp.min)}°C</p>
           <p className="text-muted-foreground/80 text-[10px] sm:text-xs">{Math.round(day.feels_like.day)}°C</p>
+=======
+          <p className="text-zinc-500 font-medium">{Math.round(day.temp.min)}°C</p>
+          <p className="text-zinc-400 text-[10px] sm:text-xs">{Math.round(day.feels_like.day)}°C</p>
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
         </div>
       ))
       }

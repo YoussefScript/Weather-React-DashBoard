@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap");
+=======
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -6,7 +9,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+<<<<<<< HEAD
     font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+=======
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
     line-height: 1.5;
     font-weight: 400;
     color-scheme: light dark;
@@ -14,6 +21,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+<<<<<<< HEAD
     --radius: 0.75rem;
     --background: oklch(0.985 0.01 250);
     --foreground: oklch(0.18 0.02 250);
@@ -33,6 +41,29 @@
     --border: oklch(0.9 0.02 250 / 60%);
     --input: oklch(0.9 0.02 250 / 60%);
     --ring: oklch(0.62 0.12 248);
+=======
+    --radius: 0.625rem;
+    --background: oklch(0.98 0 0);
+    --foreground: oklch(0.15 0 0);
+    /* ... remains the same oklch variables ... */
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.15 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.15 0 0);
+    --primary: oklch(0.45 0.25 250);
+    /* A more vibrant primary */
+    --primary-foreground: oklch(0.98 0 0);
+    --secondary: oklch(0.96 0.01 250);
+    --secondary-foreground: oklch(0.15 0 0);
+    --muted: oklch(0.96 0.01 250);
+    --muted-foreground: oklch(0.45 0.01 250);
+    --accent: oklch(0.96 0.01 250);
+    --accent-foreground: oklch(0.15 0 0);
+    --destructive: oklch(0.6 0.2 25);
+    --border: oklch(0.9 0.01 250);
+    --input: oklch(0.9 0.01 250);
+    --ring: oklch(0.45 0.25 250);
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
 }
 
 /* Custom Scrollbar - Themed */
@@ -92,11 +123,16 @@
     --card-foreground: oklch(0.98 0 0);
     --popover: oklch(0.16 0.01 250);
     --popover-foreground: oklch(0.98 0 0);
+<<<<<<< HEAD
     --primary: oklch(0.7 0.12 248);
+=======
+    --primary: oklch(0.65 0.2 250);
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
     --primary-foreground: oklch(0.12 0.01 250);
     --secondary: oklch(0.22 0.02 250);
     --secondary-foreground: oklch(0.98 0 0);
     --muted: oklch(0.22 0.02 250);
+<<<<<<< HEAD
     --muted-foreground: oklch(0.7 0.02 250);
     --accent: oklch(0.22 0.02 250);
     --accent-foreground: oklch(0.98 0 0);
@@ -104,6 +140,15 @@
     --border: oklch(1 0 0 / 12%);
     --input: oklch(1 0 0 / 18%);
     --ring: oklch(0.7 0.12 248);
+=======
+    --muted-foreground: oklch(0.65 0.01 250);
+    --accent: oklch(0.22 0.02 250);
+    --accent-foreground: oklch(0.98 0 0);
+    --destructive: oklch(0.5 0.2 25);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.65 0.2 250);
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
 }
 
 /* Weather Layer Enhancements - Theme Sensitive */
@@ -134,13 +179,18 @@
     }
 
     html,
+<<<<<<< HEAD
     body,
     #root {
+=======
+    body {
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
         @apply bg-background text-foreground;
         transition: background-color 0.3s ease, color 0.3s ease;
         background-color: var(--background);
         color: var(--foreground);
     }
+<<<<<<< HEAD
 
     body {
         background-image:
@@ -150,3 +200,6 @@
         background-attachment: fixed;
     }
 }
+=======
+}
+>>>>>>> 769175fd734c9b1eaa6bcff97bfa17debccbda11
