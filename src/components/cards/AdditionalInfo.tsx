@@ -1,12 +1,12 @@
 import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
-import Sunrise from '../../assets/sunrise.svg?react';
-import Sunset from '../../assets/sunset.svg?react';
-import Cloud from '../../assets/cloud.svg?react';
-import Uv from '../../assets/uv.svg?react';
-import Wind from '../../assets/wind.svg?react';
-import Pressure from '../../assets/pressure.svg?react';
-import Direction from '../../assets/direction.svg?react';
+import Sunrise from '../../public/sunrise.svg?react';
+import Sunset from '../../public/sunset.svg?react';
+import Cloud from '../../public/cloud.svg?react';
+import Uv from '../../public/uv.svg?react';
+import Wind from '../../public/wind.svg?react';
+import Pressure from '../../public/pressure.svg?react';
+import Direction from '../../public/direction.svg?react';
 import { useLanguage } from "../LanguageProvider";
 
 import { Coords } from "../../types";

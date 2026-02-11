@@ -14,6 +14,38 @@ import { LanguageToggle } from './components/LanguageToggle';
 import { Map as MapIcon, EyeOff } from 'lucide-react';
 import { Button } from './components/ui/button';
 
+/* Footer Component مع AdSense */
+function Footer() {
+  const { t } = useLanguage();
+
+  useEffect(() => {
+    try {
+      if (window.adsbygoogle) {
+        window.adsbygoogle.push({});
+      }
+    } catch (e) {
+      console.error("Adsense push error:", e);
+    }
+  }, []);
+
+  return (
+    <footer className='py-6 md:py-8 text-center text-muted-foreground text-xs font-medium border-t border-border/30 mt-4 md:mt-8 flex flex-col items-center gap-2'>
+      <p>{t('app.footer').replace('{year}', new Date().getFullYear().toString())}</p>
+      <p className="opacity-50 italic">{t('app.poweredBy')}</p>
+
+      {/* إعلان AdSense */}
+      <ins
+        className="adsbygoogle"
+        style={{ display: "block", marginTop: "10px" }}
+        data-ad-client="ca-pub-1438591552666134"
+        data-ad-slot="2090374347"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      ></ins>
+    </footer>
+  );
+}
+
 function AppContent() {
   const [coords, setCoords] = useState<Coords>({ lat: 24.0889, lon: 32.8998 });
   const [showMap, setShowMap] = useState(false);
@@ -43,6 +75,7 @@ function AppContent() {
   return (
     <div className='min-h-screen bg-background text-foreground transition-colors duration-300'>
       <div className='max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-6 md:py-10 flex flex-col gap-6 md:gap-10 animate-in fade-in duration-700'>
+
         {/* Header Section */}
         <header className='flex flex-col md:flex-row justify-between items-center gap-4 p-4 md:p-5 rounded-2xl bg-card/50 backdrop-blur-xl border border-border/60 shadow-lg'>
           <div className='flex flex-col gap-1 text-center md:text-left'>
@@ -80,31 +113,29 @@ function AppContent() {
 
         {/* Main Content Grid */}
         <main className='grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8'>
-          {/* Map Section - Top on mobile, Left top on desktop */}
+          {/* Map Section */}
           {showMap && (
             <div className='order-0 lg:order-1 lg:col-span-8 overflow-hidden rounded-2xl md:rounded-3xl border border-border/60 shadow-xl animate-in fade-in zoom-in-95 duration-500'>
               <Map coords={coords} onMapClick={onLocationUpdate} />
             </div>
           )}
 
-          {/* Status & Info - Second on mobile, Right on desktop */}
+          {/* Status & Info */}
           <div className={`order-1 ${showMap ? 'lg:order-2 lg:col-span-4' : 'lg:order-2 lg:col-span-5'} flex flex-col gap-6 md:gap-8 transition-all duration-500`}>
             <CurrentWeather coords={coords} />
             <AdditionalInfo coords={coords} />
           </div>
 
-          {/* Detailed Forecasts - Third on mobile, Left on desktop (below map) */}
+          {/* Detailed Forecasts */}
           <div className={`order-2 ${showMap ? 'lg:order-3 lg:col-span-8' : 'lg:order-1 lg:col-span-7'} flex flex-col gap-6 md:gap-8 transition-all duration-500`}>
             <HourlyForecast coords={coords} />
             <DailyForecast coords={coords} />
           </div>
         </main>
 
-        {/* Footer */}
-        <footer className='py-6 md:py-8 text-center text-muted-foreground text-xs font-medium border-t border-border/30 mt-4 md:mt-8'>
-          <p>{t('app.footer').replace('{year}', new Date().getFullYear().toString())}</p>
-          <p className="mt-1 opacity-50 italic">{t('app.poweredBy')}</p>
-        </footer>
+        {/* Footer with AdSense */}
+        <Footer />
+
       </div>
     </div>
   );
