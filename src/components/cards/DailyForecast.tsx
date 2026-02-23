@@ -2,6 +2,7 @@ import { useWeatherData } from "../../hooks/useWeatherData";
 import Card from "./Card";
 import { Coords } from "../../types";
 import { useLanguage } from "../LanguageProvider";
+import { useUnit } from "../UnitProvider";
 
 type Props = {
   coords: Coords;
@@ -10,6 +11,7 @@ type Props = {
 export default function DailyForecast({ coords }: Props) {
   const { data } = useWeatherData(coords);
   const { t, language } = useLanguage();
+  const { convertTemp, unitSymbol } = useUnit();
 
   const getDayName = (dt: number) => {
     return new Date(dt * 1000).toLocaleDateString(language === 'ar' ? 'ar-EG' : 'en-US', { weekday: 'short' });
@@ -17,7 +19,7 @@ export default function DailyForecast({ coords }: Props) {
 
   return (
     <Card title={t('weather.daily')} childrenClassName="flex flex-col gap-2 overflow-x-auto">
-      <div className="grid grid-cols-5 min-w-[320px] text-[10px] sm:text-xs text-muted-foreground font-semibold text-center uppercase tracking-wider">
+      <div className="grid grid-cols-5 min-w-[320px] text-[11px] sm:text-xs text-muted-foreground font-semibold text-center uppercase tracking-wider">
         <p className="text-left">{t('weather.day')}</p>
         <p></p>
         <p>{t('weather.high')}</p>
@@ -34,9 +36,9 @@ export default function DailyForecast({ coords }: Props) {
               className="w-6 h-6 sm:w-7 sm:h-7 object-contain"
             />
           </div>
-          <p className="font-medium">{Math.round(day.temp.max)}°C</p>
-          <p className="text-muted-foreground font-medium">{Math.round(day.temp.min)}°C</p>
-          <p className="text-muted-foreground/80 text-[10px] sm:text-xs">{Math.round(day.feels_like.day)}°C</p>
+          <p className="font-medium">{convertTemp(day.temp.max)}{unitSymbol}</p>
+          <p className="text-muted-foreground font-medium">{convertTemp(day.temp.min)}{unitSymbol}</p>
+          <p className="text-muted-foreground/80 text-[11px] sm:text-xs">{convertTemp(day.feels_like.day)}{unitSymbol}</p>
         </div>
       ))
       }

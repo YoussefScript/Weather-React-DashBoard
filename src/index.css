@@ -6,8 +6,8 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    font-family: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
-    line-height: 1.5;
+    font-family: Manrope, system-ui, -apple-system, Segoe UI, sans-serif;
+    line-height: 1.6;
     font-weight: 400;
     color-scheme: light dark;
     font-synthesis: none;
@@ -33,6 +33,13 @@
     --border: oklch(0.9 0.02 250 / 60%);
     --input: oklch(0.9 0.02 250 / 60%);
     --ring: oklch(0.62 0.12 248);
+    font-size: 17px;
+}
+
+@media (min-width: 768px) {
+    :root {
+        font-size: 16px;
+    }
 }
 
 /* Custom Scrollbar - Themed */
