@@ -30,7 +30,7 @@ export default function AdditionalInfo({ coords }: Props) {
     };
 
     return (
-        <Card title={t('weather.additionalInfo')} childrenClassName="flex flex-col gap-3 text-sm font-medium" >
+        <Card title={t('weather.additionalInfo')} childrenClassName="flex flex-col gap-4 text-sm sm:text-base font-medium" >
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
                     <p className="text-muted-foreground">{t('weather.cloudiness')}</p>

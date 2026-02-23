@@ -11,6 +11,8 @@ import { ThemeProvider } from './components/ThemeProvider';
 import { ThemeToggle } from './components/ThemeToggle';
 import { LanguageProvider, useLanguage } from './components/LanguageProvider';
 import { LanguageToggle } from './components/LanguageToggle';
+import { UnitProvider } from './components/UnitProvider';
+import { UnitToggle } from './components/UnitToggle';
 import { Map as MapIcon, EyeOff } from 'lucide-react';
 import { Button } from './components/ui/button';
 
@@ -77,7 +79,7 @@ function AppContent() {
             <h1 className='text-xl md:text-2xl font-semibold tracking-tight'>
               {t('app.title')}
             </h1>
-            <p className='text-muted-foreground text-xs md:text-sm font-medium tracking-wide uppercase'>
+            <p className='text-muted-foreground text-sm font-medium tracking-wide uppercase'>
               {t('app.subtitle')}
             </p>
           </div>
@@ -99,9 +101,12 @@ function AppContent() {
                 <span className="text-xs font-semibold">{showMap ? t('map.hide') : t('map.show')}</span>
               </Button>
             </div>
-            <div className="flex items-center gap-2">
-              <LanguageToggle />
+            <div className="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
+              <UnitToggle />
               <ThemeToggle />
+              <div className="col-span-2 sm:block">
+                <LanguageToggle />
+              </div>
             </div>
           </div>
         </header>
@@ -140,7 +145,9 @@ function App() {
   return (
     <LanguageProvider>
       <ThemeProvider defaultTheme="dark" storageKey="weather-app-theme">
-        <AppContent />
+        <UnitProvider>
+          <AppContent />
+        </UnitProvider>
       </ThemeProvider>
     </LanguageProvider>
   );

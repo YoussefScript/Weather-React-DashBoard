@@ -3,6 +3,7 @@ import Card from "./Card";
 import { Coords } from "../../types";
 import { Droplets, Wind, Thermometer, Clock } from "lucide-react";
 import { useLanguage } from "../LanguageProvider";
+import { useUnit } from "../UnitProvider";
 
 type Props = {
   coords: Coords;
@@ -11,6 +12,7 @@ type Props = {
 export default function CurrentWeather({ coords }: Props) {
   const { data } = useWeatherData(coords);
   const { t, language } = useLanguage();
+  const { convertTemp, convertWindSpeed, windUnit } = useUnit();
 
   const getLocalTime = (dt: number, timezone: number) => {
     const date = new Date((dt + timezone) * 1000);
@@ -28,7 +30,7 @@ export default function CurrentWeather({ coords }: Props) {
       <div className="flex flex-col items-center gap-3">
         <div className="relative">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-foreground drop-shadow-sm">
-            {Math.round(data?.current.temp || 0)}°
+            {convertTemp(data?.current.temp || 0)}°
           </h1>
         </div>
 
@@ -50,7 +52,7 @@ export default function CurrentWeather({ coords }: Props) {
       <div className="flex items-center gap-3 px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-muted/40 border border-border/50 backdrop-blur-sm">
         <Clock className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
         <div className="flex flex-col">
-          <p className="text-[9px] sm:text-[10px] text-muted-foreground uppercase font-semibold tracking-[0.2em] leading-none mb-1">
+          <p className="text-[11px] sm:text-xs text-muted-foreground uppercase font-semibold tracking-[0.2em] leading-none mb-1">
             {t('weather.localTime')}
           </p>
           <p className="text-base sm:text-lg font-semibold tracking-tight">
@@ -66,10 +68,10 @@ export default function CurrentWeather({ coords }: Props) {
             <Thermometer className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+            <p className="text-[11px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
               {t('weather.feelsLike')}
             </p>
-            <p className="text-sm sm:text-base font-semibold">{Math.round(data?.current.feels_like || 0)}°</p>
+            <p className="text-sm sm:text-base font-semibold">{convertTemp(data?.current.feels_like || 0)}°</p>
           </div>
         </div>
 
@@ -78,7 +80,7 @@ export default function CurrentWeather({ coords }: Props) {
             <Droplets className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+            <p className="text-[11px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
               {t('weather.humidity')}
             </p>
             <p className="text-sm sm:text-base font-semibold">{data?.current.humidity}%</p>
@@ -90,10 +92,10 @@ export default function CurrentWeather({ coords }: Props) {
             <Wind className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-primary" />
           </div>
           <div className="text-center">
-            <p className="text-[9px] sm:text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
+            <p className="text-[11px] sm:text-xs text-muted-foreground font-semibold uppercase tracking-[0.2em] mb-1">
               {t('weather.wind')}
             </p>
-            <p className="text-sm sm:text-base font-semibold">{data?.current.wind_speed} <span className="text-[9px] sm:text-[10px]">{t('weather.ms')}</span></p>
+            <p className="text-sm sm:text-base font-semibold">{convertWindSpeed(data?.current.wind_speed || 0)} <span className="text-[9px] sm:text-[10px]">{windUnit}</span></p>
           </div>
         </div>
       </div>

@@ -25,6 +25,9 @@ const translations: Record<Language, Record<string, string>> = {
         'location.timeout': 'The request to get user location timed out.',
         'theme.dark': 'Dark Mode',
         'theme.light': 'Light Mode',
+        'theme.mode': 'Theme',
+        'language.label': 'Language',
+        'weather.tempLabel': 'Temperature',
         'map.show': 'Show Map',
         'map.hide': 'Hide Map',
         'weather.currentIn': 'Current Weather in {city}',
@@ -49,6 +52,8 @@ const translations: Record<Language, Record<string, string>> = {
         'weather.low': 'Low',
         'weather.feels': 'Feels',
         'weather.ms': 'm/s',
+        'unit.celsius': 'Celsius',
+        'unit.fahrenheit': 'Fahrenheit',
     },
     ar: {
         'app.title': 'سكاي كاست',
@@ -66,6 +71,9 @@ const translations: Record<Language, Record<string, string>> = {
         'location.unknown': 'حدث خطأ غير معروف.',
         'theme.dark': 'الوضع المظلم',
         'theme.light': 'الوضع المضيء',
+        'theme.mode': 'المظهر',
+        'language.label': 'اللغة',
+        'weather.tempLabel': 'الحرارة',
         'map.show': 'إظهار الخريطة',
         'map.hide': 'إخفاء الخريطة',
         'weather.currentIn': 'الطقس الحالي في {city}',
@@ -90,6 +98,8 @@ const translations: Record<Language, Record<string, string>> = {
         'weather.low': 'صغرى',
         'weather.feels': 'محسوسة',
         'weather.ms': 'م/ث',
+        'unit.celsius': 'سيليزيوس',
+        'unit.fahrenheit': 'فهرنهايت',
     }
 };
 
