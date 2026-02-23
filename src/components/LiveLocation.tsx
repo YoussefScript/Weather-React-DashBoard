@@ -41,9 +41,9 @@ export default function LiveLocation({ onLocationUpdate }: LiveLocationProps) {
                 setLoading(false);
             },
             {
-                enableHighAccuracy: true,
-                timeout: 5000,
-                maximumAge: 0
+                enableHighAccuracy: false,
+                timeout: 15000,
+                maximumAge: 60000
             }
         );
     };
