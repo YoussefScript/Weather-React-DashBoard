@@ -18,16 +18,6 @@ import { Button } from './components/ui/button';
 function Footer() {
   const { t } = useLanguage();
 
-  useEffect(() => {
-    try {
-      if (window.adsbygoogle) {
-        window.adsbygoogle.push({});
-      }
-    } catch (e) {
-      console.error("Adsense push error:", e);
-    }
-  }, []);
-
   return (
     <footer className='py-6 md:py-8 text-center text-muted-foreground text-xs font-medium border-t border-border/30 mt-4 md:mt-8 flex flex-col items-center gap-2'>
       <p>{t('app.footer').replace('{year}', new Date().getFullYear().toString())}</p>
@@ -67,6 +57,11 @@ function AppContent() {
         },
         (error) => {
           console.warn("Initial geolocation failed:", error.message);
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 15000,
+          maximumAge: 60000
         }
       );
     }
