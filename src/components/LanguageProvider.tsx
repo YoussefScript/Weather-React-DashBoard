@@ -13,7 +13,7 @@ const translations: Record<Language, Record<string, string>> = {
     en: {
         'app.title': 'SkyCast',
         'app.subtitle': 'Weather Intelligence',
-        'app.footer': '© {year} SkyCast Weather. Developed by Youssef Emad Kamel.',
+        'app.footer': '© {year} SkyCast Weather. Developed by Emad Kamel Ayad.',
         'app.poweredBy': 'Powered by OpenWeather & MapTiler',
         'search.placeholder': 'Search city...',
         'search.notFound': 'City not found. Please try again.',
@@ -58,7 +58,7 @@ const translations: Record<Language, Record<string, string>> = {
     ar: {
         'app.title': 'سكاي كاست',
         'app.subtitle': 'ذكاء الطقس',
-        'app.footer': '© {year} سكاي كاست للطقس. تطوير يوسف عماد كامل.',
+        'app.footer': '© {year} سكاي كاست للطقس. تطوير عماد كامل عياد.',
         'app.poweredBy': 'بدعم من OpenWeather و MapTiler',
         'search.placeholder': 'ابحث عن مدينة...',
         'search.notFound': 'المدينة غير موجودة. يرجى المحاولة مرة أخرى.',
