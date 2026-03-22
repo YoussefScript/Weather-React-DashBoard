@@ -3,7 +3,7 @@
 
 SkyCast is a state-of-the-art, premium weather application built with **React 19**, **Tailwind CSS 4**, and **TypeScript**. It provides high-accuracy weather data coupled with a stunning glassmorphic UI, real-time map visualizations, and a seamless theme switching experience.
 
-Developed by **Youssef Emad Kamel**.
+Developed by **Emad Kamel Ayad**.
 
 ---
 
@@ -60,19 +60,5 @@ npm run dev
 ```
 
 ---
-
-## 📜 License & Rights
-
-**Copyright © 2026 Youssef Emad Kamel. All rights reserved.**
-
-This project is the exclusive property of **Youssef Emad Kamel**. 
-- Permission is **NOT** granted to copy, modify, distribute, or use this software without explicit written permission from the copyright holder.
-- Unauthorized use of this codebase is strictly prohibited.
-
----
-
-## 👨‍💻 Developed By
-
-**Youssef Emad Kamel**  
 
 *Powered by OpenWeather API & MapTiler*
