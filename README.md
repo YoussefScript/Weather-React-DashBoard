@@ -2,9 +2,6 @@
 
 
 SkyCast is a state-of-the-art, premium weather application built with **React 19**, **Tailwind CSS 4**, and **TypeScript**. It provides high-accuracy weather data coupled with a stunning glassmorphic UI, real-time map visualizations, and a seamless theme switching experience.
-
-Developed by **Emad Kamel Ayad**.
-
 ---
 
 ## ✨ Key Features
